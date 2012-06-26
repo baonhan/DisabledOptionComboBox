@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:components="*">
+	<mx:Script>
+		<![CDATA[
+		
+		]]>
+	</mx:Script>
+	<mx:VBox>
+	   <components:DisabledComboBox>
+		  <mx:ArrayCollection>
+			 <mx:Object label="Montgomery" data="Montgomery"/>
+			 <mx:Object label="Juneau" data="Juneau" enabled="{false}" />
+			 <mx:Object label="Little Rock" data="Little Rock"/>
+			 <mx:Object label="Connecticut" data="Connecticut"/>
+		  </mx:ArrayCollection>
+	   </components:DisabledComboBox>
+	</mx:VBox>
+</mx:Application>
