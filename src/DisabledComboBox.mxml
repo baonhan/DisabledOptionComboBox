@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ComboBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:components="*">
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.ListEvent;
+			override public function set dataProvider(value:Object):void
+			{
+				super.dataProvider = value;
+				this.refresh();
+			}
+			
+			public function refresh():void{
+				// select the first enabled option
+				var options:ArrayCollection = this.dataProvider as ArrayCollection;
+				for(var ii:uint=0; ii<options.length; ii++){
+					if((options.getItemAt(ii) as Object).enabled !== false){
+						this.selectedIndex = ii;
+						this.dispatchEvent(new ListEvent(ListEvent.CHANGE));
+						break;
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:itemRenderer>
+		<mx:Component>
+			<components:DisabledListItemRenderer/>
+		</mx:Component>
+	</mx:itemRenderer>
+	<mx:dropdownFactory>
+		<mx:Component>
+			<components:DisabledList/>
+		</mx:Component>
+	</mx:dropdownFactory>
+</mx:ComboBox>
